@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Crypto<span>Tracker</span></h1>
+      <nav>
+        <ul>
+          <li><a href="#crypto-list">Coins</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="container">
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search coins..." />
+      <select id="sort">
+        <option value="market_cap">Market Cap</option>
+        <option value="price">Price</option>
+        <option value="change">24h Change</option>
+      </select>
+    </div>
+
+    
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Loading crypto data...</p>
+    </div>
+
+   
+    <section id="crypto-list" class="crypto-grid">
+    </section>
+
+    <aside id="top-movers" class="top-movers">
+      <h2>Top Movers (24h)</h2>
+      <div id="movers-list"></div>
+    </aside>
+  </main>
+
+  
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <input type="text" id="subject" name="subject" placeholder="Subject" required />
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+        <div id="form-message"></div>
+      </form>
+    </div>
+  </section>
+
+  <div id="coin-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title">Coin Price History</h2>
+      <div id="chart-container">
+        <canvas id="price-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 CryptoTracker Dashboard</p>
+    </div>
+  </footer>
+
+  
+  <script>
+
+    (function() {
+      emailjs.init("wo_VGqEmvj53C5Pmv"); // Public Key-gaaga ayaa la geliyay
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
